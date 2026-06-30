@@ -1618,7 +1618,30 @@ pd_23_flags_remove<-filter(pd_23_flags_fixed,Keep.=="N")
 
 #match remove data with main data
 pd_23_clean<-filter(pd_23_clean,!(GlobalID %in% pd_23_flags_remove$GlobalID))
+
 pd_23_ag<-pd_23_clean[c(1:42,49)]
 write.csv(pd_23_ag,"plot_data_2023_ag.csv")
+pd23_sp23<-left_join(pd_23_clean,survey_plots,by="Plot_ID") #uses original survey plot database, need to add in new plots
+##trim columns
+pd23_sp23<-pd23_sp23[c(1,2,12:18,20:24,34:39,41:60)]
+pd23_sp23 <-pd23_sp23 %>% rename("pd_Notes"="Notes")
+pd23_sp23$SHAPE<-st_as_text(pd23_sp23$SHAPE)
+write.csv(pd23_sp23,"CleanRecords/survey_plot_data_2023.csv")
+#cwd merge
+cwd_23_clean<-read.csv("CleanRecords/cwd_23_clean.csv")
+pd23_sp23_cwd23<-cwd_23_clean %>% full_join(pd23_sp23, by="Plot_ID")
+##compare dbase values--is this consistent across all tables?
+pd23_sp23_cwd23 <- pd23_sp23_cwd23 %>%
+  mutate(CreationDate = case_when(
+    is.na(CreationDate.x) | is.na(CreationDate.y) ~ NA,         # NA if either is NA
+    CreationDate.x == CreationDate.y ~ TRUE,                    # TRUE if equal
+    CreationDate.x != CreationDate.y ~ FALSE                    # FALSE otherwise
+  ))
+mismatch_create<-filter(pd23_sp23_cwd23,CreationDate==FALSE) %>% mutate(Flag_type="mismatch_create") # these are like seconds off. will keep separate for now.
+###cleanup column names
+names(pd23_sp23_cwd23)
+pd23_sp23_cwd23 <- pd23_sp23_cwd23 %>% rename("CWD_Notes"="Notes") %>% rename("CWD_dbase"="dbase") %>% rename("cwd_id"="GlobalID.x") %>%rename("cwd_CreationDate"="CreationDate.x")%>%rename("cwd_Creator"="Creator.x")%>%rename("cwd_EditDate"="EditDate.x")%>%rename("cwd_Editor"="Editor.x")%>%rename("pd_CreationDate"="CreationDate.y")%>%rename("pd_Creator"="Creator.y")%>%rename("pd_EditDate"="EditDate.y")%>%rename("pd_Editor"="Editor.y")%>%rename("cwd_Kat.notes"="Kat.notes.x") %>%rename("pd_Kat.notes"="Kat.notes.y")%>% rename("d_CWD_dbase"="d_dbase") %>% rename("pd_id"="GlobalID.y")
+pd23_sp23_cwd23<-pd23_sp23_cwd23 %>% select(-CreationDate,Flag_type.x,Flag_type.y,Keep..x,Keep..y)
+write.csv(pd23_sp23_cwd23,"CleanRecords/Plot_Veg_Data_2023.csv")
 
 ##End plot level clean up--event records

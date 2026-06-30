@@ -76,7 +76,7 @@ shrubs_clean_ag<-shrubs_clean_ag[c(1:4,7:15)]
 write.csv(shrubs_clean_ag, "shrubs_2008_ag.csv")
 
 ###################################herbs
-herb_clean<-read.csv("Herbaceous_clean_2008.csv")
+herb_clean<-read.csv("CleanRecords/Herbaceous_clean_2008.csv")
 herb_names<-data.frame(herb_clean$Plant_Code,herb_clean$d_Plant_Code,herb_clean$acceptedPlant_Code,herb_clean$Notes)
 herb_names<-distinct(herb_names)
 #add key for invalid names
@@ -215,15 +215,12 @@ regen_clean<-read.csv("CleanRecords/RegenClean.csv")
 regen_names<-data.frame(regen_clean$Species,regen_clean$d_Species)
 colnames(regen_names)<-c("verbatimSpecies","verbatimd_Species")
 
-####messy names
-library(stringr)
-regen_names<-regen_names %>% mutate(verbatimd_Species=str_trim(verbatimd_Species))
 regen_names<-distinct(regen_names)
 #add key for invalid names
 #special edits needed for non code names
 regen_names<-regen_names %>% mutate(acceptedPlant_Code=tree_2_names$acceptedPlant_Code[match(verbatimd_Species,tree_2_names$verbatimd_Plant_Code)])
 ### add in additionals
-regen_names<-regen_names %>% mutate(acceptedPlant_Code=case_when(verbatimSpecies=="MAPUN2"~"MAPU",is.na(acceptedPlant_Code)& verbatimSpecies=="Acer rubrum"~"ACRU",is.na(acceptedPlant_Code)& verbatimSpecies=="Acer saccharum"~"ACSA3",
+regen_names<-regen_names %>% mutate(acceptedPlant_Code=case_when(verbatimSpecies=="MAPUN2"~"MAPU",is.na(acceptedPlant_Code)& verbatimSpecies=="Acer rubrum "~"ACRU",is.na(acceptedPlant_Code)& verbatimSpecies=="Acer saccharum "~"ACSA3",
   is.na(acceptedPlant_Code)& verbatimSpecies=="SNAG"~NA,is.na(acceptedPlant_Code)& verbatimSpecies=="UNK"~NA,is.na(acceptedPlant_Code)& verbatimSpecies=="Amelanchier spp."~"AMELA",is.na(acceptedPlant_Code)~verbatimSpecies,TRUE~acceptedPlant_Code))
 ### add key to tree dataset
 regen_clean_taxo<-regen_clean
@@ -337,8 +334,8 @@ regen_23_clean_taxo<-regen_23_clean_taxo  %>% rename("verbatimPlantID"="verbatim
 regen_23_clean_ag<-regen_23_clean_taxo[c(1:12,14)]
 write.csv(regen_23_clean_ag, "regen_2023_ag.csv")
 
-#####2023
-###taxonomy
+
+
 trees_23_clean<-read.csv("CleanRecords/Trees23Clean.csv")
 ##############plant taxonomy 
 ###########################trees
@@ -348,7 +345,6 @@ tree_23_names<-distinct(tree_23_names)
 colnames(tree_23_names)<-c("verbatimPlant_Code","verbatimd_Plant_Code","acceptedPlant_Code","Kat.notes")
 #special edits based on the flagged names
 tree_23_names<-tree_23_names %>% mutate(acceptedPlant_Code=case_when(!is.na(acceptedPlant_Code)~acceptedPlant_Code,verbatimPlant_Code=="SNAG"~NA,verbatimPlant_Code=="UNK"~NA,verbatimPlant_Code=="CRATUK"~"CRATA",verbatimPlant_Code=="TSUGA"~"TSCA",verbatimPlant_Code=="RHUUK"~"RHUS",verbatimPlant_Code=="MAPUN2"~"MAPU",is.na(acceptedPlant_Code) & verbatimPlant_Code=="VITUK"~"VITIS",is.na(acceptedPlant_Code) & verbatimPlant_Code=="VIBUK"~"VIBUR",verbatimPlant_Code=="CRSP"~NA,TRUE~verbatimPlant_Code))
-tree_23_names[tree_23_names == ""] <- NA
 tree_23_names<-distinct(tree_23_names)
 
 ### add key to tree dataset
@@ -387,7 +383,7 @@ us_23_clean_taxo<-us_23_clean_taxo %>%
   mutate(
     accepted_Genus = accepted_Genus.y) %>%
   select(-c(X,Notes.new.new,accepted_Genus.x,accepted_Genus.y))
-us_23_clean_taxo<-us_23_clean_taxo  %>% rename("verbatimPlantID"="verbatimGenus") 
+us_23_clean_taxo<-us_23_clean_taxo  %>% rename("verbatimPlantID"="verbatimGenus","acceptedd_Genus"="accepted_Genus") 
 #arcgis copy
 us_23_clean_ag<-us_23_clean_taxo[1:10,13:14]
 write.csv(us_23_clean_ag,"us_2023_ag.csv")
@@ -396,10 +392,9 @@ write.csv(us_23_clean_ag,"us_2023_ag.csv")
 eph_trees_23_clean<-read.csv("CleanRecords/EphemeralRegenTrees.csv")
 eph_trees_23_names<-data.frame(eph_trees_23_clean$Species,eph_trees_23_clean$d_Species)
 colnames(eph_trees_23_names)<-c("verbatimSpecies","verbatimd_Species")
-eph_trees_23_names<-eph_trees_23_names %>% mutate(verbatimSpecies=str_trim(verbatimSpecies))
 eph_trees_23_names<-distinct(eph_trees_23_names)
 ### add in additionals for this dataset
-eph_trees_23_names<-eph_trees_23_names %>% mutate(acceptedPlant_Code=case_when(verbatimSpecies=="Acer pensylvanicum"~"ACPE",verbatimSpecies=="Acer rubrum"~"ACRU",verbatimSpecies=="Acer saccharum"~"ACSA3",verbatimSpecies=="Amelanchier spp."~"AMELA", verbatimSpecies=="Betula lenta"~"BELE",                                                       verbatimSpecies=="SNAG"~NA,verbatimSpecies=="Carpinus caroliniana"~"CACA18",verbatimSpecies=="Carya spp."~"CARYA",verbatimSpecies=="Cornus florida"~"COFL2",verbatimSpecies=="Cratagus spp."~"CRATA",verbatimSpecies=="Fagus grandifolia"~"FAGR",verbatimSpecies=="Ostrya virginiana"~"OSVI",verbatimSpecies=="Quercus alba"~"QUAL",verbatimSpecies=="Quercus velutina"~"QUVE",verbatimSpecies=="Robinia pseudoacacia"~"ROPS",TRUE~NA))
+eph_trees_23_names<-eph_trees_23_names %>% mutate(acceptedPlant_Code=case_when(verbatimSpecies=="Acer pensylvanicum"~"ACPE",verbatimSpecies=="Acer rubrum "~"ACRU",verbatimSpecies=="Acer saccharum "~"ACSA3",verbatimSpecies=="Amelanchier spp."~"AMELA", verbatimSpecies=="Betula lenta"~"BELE",                                                       verbatimSpecies=="SNAG"~NA,verbatimSpecies=="Carpinus caroliniana"~"CACA18",verbatimSpecies=="Carya spp."~"CARYA",verbatimSpecies=="Cornus florida"~"COFL2",verbatimSpecies=="Cratagus spp."~"CRATA",verbatimSpecies=="Fagus grandifolia"~"FAGR",verbatimSpecies=="Ostrya virginiana"~"OSVI",verbatimSpecies=="Quercus alba"~"QUAL",verbatimSpecies=="Quercus velutina"~"QUVE",verbatimSpecies=="Robinia pseudoacacia"~"ROPS",TRUE~NA))
 
 
 ### add key to tree dataset
@@ -420,6 +415,7 @@ plants_names<-plants_names%>% mutate(verbatimPlantID=coalesce(verbatimPlant_Code
 plants_names<-distinct(plants_names)
 
 usda_names<-read.csv("PlantTaxonomy/Pennsylvania_NRCS_csv.txt")
+
 usda_names<-usda_names %>% rename("acceptedPlant_Code"="Symbol")
 
 #no synonyms
@@ -432,9 +428,9 @@ plants_names_2025<-plants_names_2025 %>% mutate(verbatimPlantID=coalesce(verbati
 plants_names_2025<-distinct(plants_names_2025)
 
 #####2023 names
-plants_names_2023<-bind_rows(tree_23_names,regen_23_names,understory_23_names)
+plants_names_2023<-bind_rows(eph_trees_23_names,tree_23_names,regen_23_names,understory_23_names)
 plants_names_2023<-distinct(plants_names_2023)
-plants_names_2023<-plants_names_2023 %>% mutate(verbatimPlantID=coalesce(verbatimPlant_Code,verbatimSpecies)) %>% mutate(verbatimd_PlantID=coalesce(verbatimd_Plant_Code,verbatimd_Species)) %>% select(c(verbatimPlantID,verbatimd_PlantID,acceptedPlant_Code))
+plants_names_2023<-plants_names_2023 %>% mutate(verbatimPlantID=coalesce(verbatimPlant_Code,verbatimGenus,verbatimSpecies)) %>% mutate(verbatimd_PlantID=coalesce(verbatimd_Plant_Code,verbatimd_Species)) %>% select(c(verbatimPlantID,verbatimd_PlantID,acceptedPlant_Code,accepted_Genus)) %>% rename("acceptedd_Genus"="accepted_Genus")
 plants_names_2023<-distinct(plants_names_2023)
 
 
@@ -635,24 +631,26 @@ regen_23_clean_taxo<-regen_23_clean_taxo %>%
 ###trees 2023
 trees_23_clean_taxo<-trees_23_clean_taxo %>%
   left_join(plant_taxo_accepted_all,by=c("verbatimPlantID","verbatimd_PlantID","acceptedPlant_Code"))
+###trees 2023--remove absence
+trees_23_clean_taxo_presence<-trees_23_clean_taxo %>%
+  filter(Keep.=="" | is.na(Keep.))
 #understory
 us_23_clean_taxo<-us_23_clean_taxo %>%
-  left_join(plant_taxo_accepted_all,by=c("verbatimPlantID"="verbatimPlantID","accepted_Genus"="Genus"))
+  left_join(plant_taxo_accepted_all,by=c("verbatimPlantID"="verbatimPlantID","acceptedd_Genus"="acceptedd_Genus"))
 us_23_clean_taxo<-us_23_clean_taxo %>%
   group_by(GlobalID) %>%
   summarise(across(everything(), ~ Reduce(coalesce, .) ))
-
+###--remove absence
+us_23_clean_taxo_presence<-us_23_clean_taxo %>%
+  filter(Keep.=="" | is.na(Keep.))
 #### eph regen trees
 eph_trees_23_clean_taxo<-eph_trees_23_clean_taxo %>%
-  left_join(plant_taxo_accepted_all,by=c("verbatimPlantID","acceptedPlant_Code"))
-#CLEAN UP
-eph_trees_23_clean_taxo<- eph_trees_23_clean_taxo %>%filter(!verbatimd_PlantID.y=="Unknown" | is.na(verbatimd_PlantID.y))
-eph_trees_23_clean_taxo<-eph_trees_23_clean_taxo %>% mutate(verbatimd_PlantID=coalesce(verbatimd_PlantID.x,verbatimd_PlantID.y)) %>% select(-c(verbatimd_PlantID.x,verbatimd_PlantID.y))
+  left_join(plant_taxo_accepted_all,by=c("verbatimPlantID","verbatimd_PlantID","acceptedPlant_Code"))
 # List of named dataframes
 occ_dfs <- list(
-  trees_23_clean_taxo = trees_23_clean_taxo,
+  trees_23_clean_taxo_presence = trees_23_clean_taxo_presence,
   regen_23_clean_taxo = regen_23_clean_taxo,
-  us_23_clean_taxo = us_23_clean_taxo,
+  us_23_clean_taxo_presence = us_23_clean_taxo_presence,
   eph_trees_23_clean_taxo = eph_trees_23_clean_taxo
 )
 
