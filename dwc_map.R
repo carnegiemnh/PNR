@@ -157,9 +157,9 @@ key<-tibble(old=key$original_col,new=key$field)
       ) %>% pivot_longer(cols=c("d_CC","d_CC_0_05","d_CC_05_2","d_CC_2_5","Primary_CC_0_05","Primary_CC_05_2","Primary_CC_2_5","Secondary_CC_0_05","Secondary_CC_05_2","Secondary_CC_2_5"),names_to="organismQuantityType",values_to="organismQuantity") %>%  select(-c(type,CC,CC_0_05,CC_05_2,CC_2_5,Kat.notes))
   },
   vegocc2025 = function(df) {
-    df<-df %>% mutate(across(c(`Count_`, `Count_under1m`), as.character)) %>% pivot_longer(cols=c("d_CC","Count_","Count_under1m"),names_to="organismQuantityType",values_to="organismQuantity")%>%  pivot_longer(cols=c("No_Invasives"),names_to="degreeofEstablishment",values_to="degreeofEstablishmentTF")%>% 
-      mutate(degreeofEstablishment=case_when(degreeofEstablishmentTF=="Yes"~"Invasive",TRUE~NA)) %>%
-      select(-c(CC,Kat.notes,degreeofEstablishmentTF))
+    df<-df %>% mutate(across(c(`Count_`, `Count_under1m`), as.character)) %>% pivot_longer(cols=c("d_CC","Count_","Count_under1m"),names_to="organismQuantityType",values_to="organismQuantity")%>%  pivot_longer(cols=c("No_Invasives"),names_to="degreeOfEstablishment",values_to="degreeOfEstablishmentTF")%>% 
+      mutate(degreeOfEstablishment=case_when(degreeOfEstablishmentTF=="Yes"~"Invasive",TRUE~NA)) %>%
+      select(-c(CC,Kat.notes,degreeOfEstablishmentTF))
   },vegocc2023 = function(df) {
     df<-df %>% mutate(across(c(`Count_`, `Count_Under_1m`, `Count_Over_1m`), as.character)) %>% pivot_longer(cols=c("d_CC","Count_","Count_Under_1m","Count_Over_1m"),names_to="organismQuantityType",values_to="organismQuantity")%>%
       select(-c(CC))
@@ -277,9 +277,9 @@ plot_veg_mapped_dwcevent<-plot_veg_mapped_dwcevent %>% select(-c(habitat,locatio
   rename("verbatimLatitude"= "verbatimCoordinateSystem | verbatimLatitude")%>% rename("verbatimLongitude"= "verbatimCoordinateSystem | verbatimLongitude") %>% 
   #rename("protocolNames"= "protocolNames.1") %>% 
   rename("habitat"= "habitat.1") %>% 
-  mutate(
-    verbatimElevation = case_when(!is.na(verbatimElevation)~paste0(verbatimElevation, " m"), TRUE~NA),
-    minimumElevationInMeters = verbatimElevation)
+  mutate(minimumElevationInMeters = verbatimElevation,
+    verbatimElevation = case_when(!is.na(verbatimElevation)~paste0(verbatimElevation, " m"), TRUE~NA)
+    )
 #####make humboldt core extension table
 key<-filter(plotveg_map,original_col %in% old & dwca_class=="HumboldtCore")
 key<-tibble(old=key$original_col,new=key$field)
