@@ -282,7 +282,7 @@ taxo_lookup<-rbind(taxo_lookup,null) %>% distinct()
 GBIF_export$occ$family<-NULL
 GBIF_export$occ$genus<-NULL
 GBIF_export$occ$specificEpithet<-NULL
-
+GBIF_export$occ$taxonID<-NULL
 GBIF_export$occ<-GBIF_export$occ %>%
   left_join(taxo_lookup,by="scientificName") %>%
   distinct()
