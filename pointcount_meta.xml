@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<archive xmlns="http://rs.tdwg.org/dwc/text/"
+         metadata="eml.xml">
+
+  <core encoding="UTF-8"
+        linesTerminatedBy="\n"
+        fieldsTerminatedBy="\t"
+        fieldsEnclosedBy=""
+        ignoreHeaderLines="1"
+        rowType="http://rs.tdwg.org/dwc/terms/Event">
+
+    <files>
+      <location>event.txt</location>
+    </files>
+
+    <id index="0"/>
+
+    <field index="0" term="http://rs.tdwg.org/dwc/terms/eventID"/>
+    <field index="1" term="http://rs.tdwg.org/dwc/terms/locationID"/>
+    <field index="2" term="http://rs.tdwg.org/dwc/terms/verbatimEventDate"/>
+    <field index="3" term="http://rs.tdwg.org/dwc/terms/eventRemarks"/>
+    <field index="6" term="http://rs.tdwg.org/dwc/terms/year"/>
+    <field index="7" term="http://rs.tdwg.org/dwc/terms/month"/>
+    <field index="8" term="http://rs.tdwg.org/dwc/terms/day"/>
+    <field index="9" term="http://rs.tdwg.org/dwc/terms/verbatimLongitude"/>
+    <field index="10" term="http://rs.tdwg.org/dwc/terms/verbatimLatitude"/>
+    <field index="11" term="http://rs.tdwg.org/dwc/terms/decimalLatitude"/>
+    <field index="12" term="http://rs.tdwg.org/dwc/terms/decimalLongitude"/>
+    <field index="13" term="http://rs.tdwg.org/dwc/terms/verbatimElevation"/>
+    <field index="14" term="http://rs.tdwg.org/dwc/terms/footprintWKT"/>
+    <field index="15" term="http://rs.tdwg.org/dwc/terms/minimumElevationInMeters"/>
+    <field index="16" term="http://rs.tdwg.org/dwc/terms/geodeticDatum"/>
+    <field index="17" term="http://rs.tdwg.org/dwc/terms/eventDate"/>
+    <field index="18" term="http://rs.tdwg.org/dwc/terms/sampleSizeUnit"/>
+    <field index="19" term="http://rs.tdwg.org/dwc/terms/sampleSizeValue"/>
+    <field index="20" term="http://rs.tdwg.org/dwc/terms/countryCode"/>
+    <field index="21" term="http://rs.tdwg.org/dwc/terms/locality"/>
+    <field index="22" term="http://rs.tdwg.org/dwc/terms/stateProvince"/>
+    <field index="23" term="http://rs.tdwg.org/dwc/terms/verbatimCoordinateSystem"/>
+
+  </core>
+
+  <extension encoding="UTF-8"
+        linesTerminatedBy="\n"
+        fieldsTerminatedBy="\t"
+        fieldsEnclosedBy=""
+        ignoreHeaderLines="1"
+        rowType="http://rs.tdwg.org/dwc/terms/Occurrence">
+
+    <files>
+      <location>occur.txt</location>
+    </files>
+
+    <coreid index="0"/>
+
+    <field index="1" term="http://rs.tdwg.org/dwc/terms/occurrenceID"/>
+    <field index="2" term="http://rs.tdwg.org/dwc/terms/verbatimIdentification"/>
+    <field index="3" term="http://rs.tdwg.org/dwc/terms/organismQuantity"/>
+    <field index="4" term="http://rs.tdwg.org/dwc/terms/occurrenceRemarks"/>
+    <field index="5" term="http://rs.tdwg.org/dwc/terms/taxonRemarks"/>
+    <field index="6" term="http://rs.tdwg.org/dwc/terms/scientificName"/>
+    <field index="7" term="http://rs.tdwg.org/dwc/terms/vernacularName"/>
+    <field index="8" term="http://rs.tdwg.org/dwc/terms/taxonRank"/>
+    <field index="9" term="http://rs.tdwg.org/dwc/terms/infraSpecificEpithet"/>
+    <field index="10" term="http://rs.tdwg.org/dwc/terms/basisOfRecord"/>
+    <field index="11" term="http://rs.tdwg.org/dwc/terms/occurrenceStatus"/>
+    <field index="12" term="http://rs.tdwg.org/dwc/terms/organismQuantityType"/>
+    <field index="13" term="http://rs.tdwg.org/dwc/terms/kingdom"/>
+    <field index="14" term="http://rs.tdwg.org/dwc/terms/phylum"/>
+    <field index="15" term="http://rs.tdwg.org/dwc/terms/class"/>
+    <field index="16" term="http://rs.tdwg.org/dwc/terms/specificEpithet"/>
+    <field index="17" term="http://rs.tdwg.org/dwc/terms/genus"/>
+    <field index="18" term="http://rs.tdwg.org/dwc/terms/order"/>
+    <field index="19" term="http://rs.tdwg.org/dwc/terms/family"/>
+
+  </extension>
+
+  <extension encoding="UTF-8"
+        linesTerminatedBy="\n"
+        fieldsTerminatedBy="\t"
+        fieldsEnclosedBy=""
+        ignoreHeaderLines="1"
+        rowType="http://rs.tdwg.org/eco/terms/Event">
+  
+    <files>
+      <location>eco.txt</location>
+    </files>
+
+    <coreid index="0"/>
+
+    <field index="1" term="http://rs.tdwg.org/eco/terms/samplingPerformedBy"/>
+    <field index="2" term="http://rs.tdwg.org/eco/terms/reportedWeather"/>
+    <field index="3" term="http://rs.tdwg.org/eco/terms/targetTaxonomicScope"/>
+    <field index="4" term="http://rs.tdwg.org/eco/terms/isTaxonomicScopeFullyReported"/>
+    <field index="5" term="http://rs.tdwg.org/eco/terms/isAbsenceReported"/>
+    <field index="6" term="http://rs.tdwg.org/eco/terms/protocolNames"/>
+    <field index="7" term="http://rs.tdwg.org/eco/terms/isAbundanceReported"/>
+    <field index="8" term="http://rs.tdwg.org/eco/terms/samplingEffortValue"/>
+    <field index="9" term="http://rs.tdwg.org/eco/terms/samplingEffortUnit"/>
+    <field index="10" term="http://rs.tdwg.org/eco/terms/totalAreaSampledValue"/>
+    <field index="11" term="http://rs.tdwg.org/eco/terms/totalAreaSampledUnit"/>
+    <field index="12" term="http://rs.tdwg.org/eco/terms/samplingEffortProtocol"/>
+
+  </extension>
+
+</archive>
