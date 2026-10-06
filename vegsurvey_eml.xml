@@ -43,7 +43,7 @@
          <country>US</country>
        </address>
        <electronicMailAddress>WarholV@CarnegieMnh.Org</electronicMailAddress>
-       <role>editor</role>
+       <role>programmer</role>
      </associatedParty>
      <associatedParty>
        <individualName>
@@ -59,45 +59,14 @@
        <electronicMailAddress>SaxfieldJ@CarnegieMNH.Org</electronicMailAddress>
        <role>author</role>
      </associatedParty>
-     <pubDate>2026-06-16</pubDate>
+     <pubDate>2026-10-05</pubDate>
      <language>eng</language>
      <abstract>
-       <para>The Powdermill Nature Reserve Vegetation Survey geodatabase is an archive and baseline of
-       the existing vegetation species and associated attribute data of nearly 2,000 acres of
-       Powdermill Nature Reserve (PNR) – the Carnegie Museum of Natural History’s (CMNH) environmental
-       research center located near Rector, Pennsylvania – completed during the summers of 2006, 2007,
-       2008, and the center plots were completed in 2025. The geodatabase can be used to create
-       vegetation maps of PNR, select habitat and vegetation plots, manage forest resources, and
-       analyze forest ecology, among other uses. The survey will also enhance ancillary research by
-       enabling researchers to track the spatial and temporal changes of the reserves vast vegetation
-       resources as new field data is collected using the same structure and protocols. This project
-       was funded from 2006 to 2008 and began with a generous gift from The Heinz Endowments. The 2025
-       survey and analysis of the 2006 through 2025 data was funded by the Richard King Mellon
-       Foundation.</para>
-       <para>Data was collected using a comprehensive protocol developed by CMNH PNR and all surveyors
-       received training in plant identification, cover class estimation, measurement techniques, and
-       proper equipment use. Survey collection occurred from 1 June to 30 September. The sampling
-       design consists of a contiguous grid of 120-meter blocks, represented as a polygon feature
-       class, overlaid across the main area of PNR. Vegetation was cataloged and measured in nine
-       nonoverlapping 10-meter radius plots, represented as a point feature class, arranged in a 3 x 3
-       matrix within the block with the center plot located at the centroid of the block. For each 10m
-       radius plot data was collected in standalone tables on disturbance; canopy cover; vegetation
-       structure on the ground, near the ground, and in the mid-canopy; ground cover of bare soil,
-       rocks, ferns, forbs, and graminoids; and leaf litter. Within each 10m radius plot, herbaceous,
-       shrub, invasive, and special concern vegetation species were identified and cover estimated;
-       all trees greater than 8cm diameter at breast height (DBH) were identified and had DBH
-       measured; and all coarse woody debris greater than 5cm in diameter were assessed for
-       decomposition level and size. Within 5m radius of each plot centroid, all woody plants less
-       than 8cm DBH were identified and cover estimated.</para>
+       <para>The Powdermill Nature Reserve Vegetation Survey geodatabase is an archive and baseline of the existing vegetation species and associated attribute data of nearly 2,000 acres of Powdermill Nature Reserve (PNR) – the Carnegie Museum of Natural History’s (CMNH) environmental research center located near Rector, Pennsylvania – completed during the summers of 2006, 2007, 2008, and the center plots were completed in 2025. The geodatabase can be used to create vegetation maps of PNR, select habitat and vegetation plots, manage forest resources, and analyze forest ecology, among other uses. The survey will also enhance ancillary research by enabling researchers to track the spatial and temporal changes of the reserves vast vegetation resources as new field data is collected using the same structure and protocols. This project was funded from 2006 to 2008 and began with a generous gift from The Heinz Endowments. The 2025 survey and analysis of the 2006 through 2025 data was funded by the Richard King Mellon Foundation.</para>
+       <para>Data was collected using a comprehensive protocol developed by CMNH PNR and all surveyors received training in plant identification, cover class estimation, measurement techniques, and proper equipment use. Survey collection occurred from 1 June to 30 September. The sampling design consists of a contiguous grid of 120-meter blocks, represented as a polygon feature class, overlaid across the main area of PNR. Vegetation was cataloged and measured in nine nonoverlapping 10-meter radius plots, represented as a point feature class, arranged in a 3 x 3 matrix within the block with the center plot located at the centroid of the block. For each 10m radius plot data was collected in standalone tables on disturbance; canopy cover; vegetation structure on the ground, near the ground, and in the mid-canopy; ground cover of bare soil, rocks, ferns, forbs, and graminoids; and leaf litter. Within each 10m radius plot, herbaceous, shrub, invasive, and special concern vegetation species were identified and cover estimated; all trees greater than 8cm diameter at breast height (DBH) were identified and had DBH measured; and all coarse woody debris greater than 5cm in diameter were assessed for decomposition level and size. Within 5m radius of each plot centroid, all woody plants less than 8cm DBH were identified and cover estimated.</para>
      </abstract>
        <intellectualRights>
-         <para>
-           This work is licensed under a
-           <ulink url="http://creativecommons.org/licenses/by/4.0/legalcode">
-             <citetitle>Creative Commons Attribution (CC-BY) 4.0 License</citetitle>
-           </ulink>
-           .
-         </para>
+         <para>This work is licensed under a <ulink url="http://creativecommons.org/licenses/by/4.0/legalcode"><citetitle>Creative Commons Attribution (CC-BY) 4.0 License</citetitle></ulink>.</para>
        </intellectualRights>
      <coverage>
        <geographicCoverage>
@@ -109,6 +78,16 @@
            <southBoundingCoordinate>40.117202407922704</southBoundingCoordinate>
          </boundingCoordinates>
        </geographicCoverage>
+       <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2007-06-20</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2025-08-05</calendarDate>
+          </endDate>
+        </rangeOfDates>
+       </temporalCoverage>
        <taxonomicCoverage>
          <generalTaxonomicCoverage>Vascular plants</generalTaxonomicCoverage>
          <taxonomicClassification>
@@ -140,28 +119,16 @@
        <sampling>
          <studyExtent>
            <description>
-             <para>Powdermill Nature Reserve (PNR) – the Carnegie Museum of Natural History’s
-             environmental research center located near Rector, Pennsylvania</para>
+             <para>Powdermill Nature Reserve (PNR) – the Carnegie Museum of Natural History’s environmental research center located near Rector, Pennsylvania</para>
            </description>
          </studyExtent>
          <samplingDescription>
-           <para>The sampling design consists of a contiguous grid of 120-meter blocks overlaid across
-           the main area of PNR. Vegetation was cataloged and measured in nine nonoverlapping 10-meter
-           radius plots arranged in a 3 x 3 matrix within the block with the center plot located at
-           the centroid of the block. Some vegetation was only collected within 5-meter radius of each
-           10-meter plot. The Vegetation Survey is conducted from leaf-on to leaf-off, approximately
-           from June 1st – September 30th. Surveys can be conducted independently or in pairs. At each
-           point, only one surveyor will estimate cover classes, for consistency. The second surveyor
-           can measure trees, identify plants, and/or perform data entry. Surveyors are required to
-           complete training in plant identification, cover class estimation, measurement techniques,
-           and proper equipment use, such as using GPS units and densiometers.</para>
+           <para>The sampling design consists of a contiguous grid of 120-meter blocks overlaid across the main area of PNR. Vegetation was cataloged and measured in nine nonoverlapping 10-meter radius plots arranged in a 3 x 3 matrix within the block with the center plot located at the centroid of the block. Some vegetation was only collected within 5-meter radius of each 10-meter plot. The Vegetation Survey is conducted from leaf-on to leaf-off, approximately from June 1st – September 30th. Surveys can be conducted independently or in pairs. At each point, only one surveyor will estimate cover classes, for consistency. The second surveyor can measure trees, identify plants, and/or perform data entry. Surveyors are required to complete training in plant identification, cover class estimation, measurement techniques, and proper equipment use, such as using GPS units and densiometers.</para>
          </samplingDescription>
        </sampling>
        <qualityControl>
          <description>
-           <para>All data is entered directly into tables in ArcGIS Field Maps. A protocol describes
-           what data needs to be entered for each section. After surveys, data were checked by the
-           surveyor, followed by PNR staff at two different stages.</para>
+           <para>All data is entered directly into tables in ArcGIS Field Maps. A protocol describes what data needs to be entered for each section. After surveys, data were checked by the surveyor, followed by PNR staff at two different stages.</para>
          </description>
        </qualityControl>
      </methods>
@@ -175,8 +142,7 @@
          <role>principalInvestigator</role>
        </personnel>
        <abstract>
-         <para>Toward undertaking an integrated data analysis to develop resources that position
-         Powdermill Nature Reserve as a regional leader in characterizing long-term change.</para>
+         <para>Toward undertaking an integrated data analysis to develop resources that position Powdermill Nature Reserve as a regional leader in characterizing long-term change.</para>
        </abstract>
        <funding>
          <para>Richard King Mellon Foundation</para>
